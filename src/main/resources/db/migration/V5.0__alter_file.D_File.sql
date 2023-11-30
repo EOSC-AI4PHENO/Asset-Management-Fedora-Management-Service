@@ -1,0 +1,3 @@
+ALTER TABLE "file"."D_File" ADD COLUMN IF NOT EXISTS "originDirectory" VARCHAR(255);
+
+ALTER TABLE "file"."D_File" ADD COLUMN IF NOT EXISTS "size" BIGINT;

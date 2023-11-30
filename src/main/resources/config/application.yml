@@ -1,0 +1,60 @@
+app:
+  version: 1.0.1
+  fedora:
+    url: xxxxxxxxxx
+    login: xxxxxxxxxx
+    password: xxxxxxxxxx
+
+server:
+  port: 6101
+  error:
+    include-message: always
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: xxxxxxxxxx
+            client-secret: xxxxxxxxxx
+            redirect-uri: xxxxxxxxxx
+
+
+  application:
+    name: fedora-management-service
+  datasource:
+    url: jdbc:postgresql://10.0.5.230:5432/files
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      database: postgresql
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: Europe/Warsaw
+
+springdoc:
+  api-docs:
+    path: /api/assets/fedora/v3/api-docs
